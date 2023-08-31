@@ -1,6 +1,11 @@
-"""Wanted to refresh myself on how Python can be use for system utilities"""
-from tool_usage import *
+"""Wanted to refresh myself on how Python can be used for system utilities"""
+import os
+import platform
+import psutil
+import datetime
+from datetime import date
 import argparse
+import sys
 
 # create parser
 parser = argparse.ArgumentParser()
@@ -10,14 +15,15 @@ args = parser.parse_args()
 print("Hi " + args.name)
 
 if args.name == "Seth":
-    print("Today's date is: ", get_date())
-    print("Your operating system is: ", get_os())
-    print("Python version is: ", get_python_version())
-    print("Your machine is", get_machine())
-    print("Your platform is: ", get_system())
-    print("Your architecture is: ", get_architecture())
-    print("Your cpu times are: ", get_cputimes())
-    print("Your disk usage is: ", get_diskusage())
-    print("Your boot time is: ", get_boottime())
+    print("Today's date is: ", datetime.date.today())
+    print("Your operating system is: ", os.name)
+    print("Python version is: ", platform.python_version())
+    print("Your machine is", platform.machine())
+    print("Your platform is: ", platform.system())
+    print("Your architecture is: ", platform.architecture())
+    print("Your cpu times are: ", psutil.cpu_times())
+    print("Your disk usage is: ", psutil.disk_usage('/'))
+    print("Your boot time is: ", psutil.boot_time())
+    print("Python information: ", sys.copyright)
 else:
     print("Get lost creep!!")
