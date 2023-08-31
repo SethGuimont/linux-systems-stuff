@@ -3,7 +3,6 @@ import os
 import platform
 import psutil
 import datetime
-from datetime import date
 import argparse
 import sys
 
